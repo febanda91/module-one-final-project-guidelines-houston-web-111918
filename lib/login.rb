@@ -2,11 +2,15 @@ class Login
 
     def login_menu
         puts "************************\n\n"
-        puts "Great! Choose an option:\n\n"
+        puts "Choose an option:\n\n"
         puts "1. Create an Account"
         puts "2. Log in to an Existing Account\n\n"
+<<<<<<< HEAD
         puts "At any time, enter 'Exit' if you want to leave the program\n\n"
         login_options_input #after presenting the user with their options it moves them to the "login_options_input" method so they can enter their input
+=======
+        login_options_input
+>>>>>>> ba142f0f8142e5760727eeeacccafd50427c3952
     end
 
     def login_options_input
@@ -43,7 +47,7 @@ class Login
         end
     
         if is_unique == TRUE
-            created_user = User.create(username: created_user) #if it is a unique name, then set  the variable to the instance of that name
+            created_user = User.create(username: created_user) 
             created_user.update(age: age_input, gender: gender_input)
         else is_unique == FALSE
             puts "\n"
@@ -94,7 +98,7 @@ class Login
     def start_trivia
         system("clear")
         puts "************************\n\n"
-        puts "Greetings, #{$account_instance.username}!"
+        puts "Greetings, #{$account_instance.username}!\n\n"
         puts "We are now ready to learn some PETTY facts about numbers!\n\n"
         trivia_or_bookmarks?
     end
@@ -104,7 +108,6 @@ class Login
         puts "Would you like to:\n\n1. View a NEW petty fact?"
         puts "2. View your bookmarks?"
         puts "3. Exit program\n\n"
-        #puts "4. View top 5 PETTY FACTS voted on by your petty peers\n\n"
         input = gets.chomp.downcase
         if input == "1" || input == "1."
             system ("clear")
@@ -121,11 +124,9 @@ class Login
             puts "Thank you! Come again!\n\n"
             puts "************************\n\n"
             exit
-        #elsif
-            #input == "4" || input == "4."
-            #most_popular_facts
         else
-            puts "Yo... Read the instructions!"
+            system("clear")
+            puts "\n\nYo... You have three options! \n\n"
             trivia_or_bookmarks?
         end
     end
@@ -182,18 +183,19 @@ class Login
     def other_options
         system("clear")
         puts "************************\n\n"
-        puts "Okay...Would you like to...\n\n1. See the another fact about that same number?(doesn't work yet) \n2. Enter a new number?"
+        puts "Okay...Would you like to...\n\n1. See the another fact about that same number?(doesn't work yet) \n2. Enter a new number?\n\n"
         other_options_input
     end
 
     def other_options_input
-        input = gets.chomp
+        input = gets.chomp.downcase
         system("clear")
         if input == "1" || input == "1."
-            #puts "" FIX THIS
+            puts "This doesn't work yet."
+            trivia_or_bookmarks?
         elsif input == "2" || input == "2."
             enter_number
-        elsif input.downcase == "exit" || "exit!"
+        elsif input == "exit" || input == "exit!"
             exit
         else
             puts "************************\n\n"
@@ -204,17 +206,4 @@ class Login
             other_options_input
         end
     end
-
-
-    # def most_popular_facts
-    #     PettyFact.group(:user_id).order('petty_fact_id DESC').limit(5).count(:id)
-    #     binding.pry
-    # end
-
-    # def top_facts_of_the_week
-    #     Bookmark.all.each do |book|
-    #     book.order("date_truc('week', published_at)")
-    #     end
-    # end   
-
 end
