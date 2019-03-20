@@ -5,20 +5,20 @@ class Login
         puts "Great! Choose an option:\n\n"
         puts "1. Create an Account"
         puts "2. Log in to an Existing Account\n\n"
-        #puts "At any time, enter 'Exit' if you want to leave the program"
-        login_options_input
+        puts "At any time, enter 'Exit' if you want to leave the program\n\n"
+        login_options_input #after presenting the user with their options it moves them to the "login_options_input" method so they can enter their input
     end
 
     def login_options_input
-        input = gets.chomp.downcase
-        system("clear")
-        $account_instance = nil
+        input = gets.chomp.downcase #lets user input their data and the "downcase" turns whatever they inputed into downcase
+        system("clear") #clears terminal after executing response 
+        $account_instance = nil 
 
         if input == "1" || input == "1."
-            $account_instance = create_account
+            $account_instance = create_account      #setting a global variable equal to a method and running the method at the same time then defaulting to start_trivia as the next move
             start_trivia
         elsif input == "2" || input == "2."
-            $account_instance = login_to_existing_account
+            $account_instance = login_to_existing_account  #setting a global variable equal to a method and running the method at the same time then defaulting to start_trivia as the next move
             start_trivia
         elsif input == "exit" || input == "exit!"
             system("clear")

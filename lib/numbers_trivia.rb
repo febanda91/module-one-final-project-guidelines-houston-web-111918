@@ -6,7 +6,7 @@ class NumbersTrivia
         system("clear")
         puts "************************\n\n#{fact}\n\n************************\n\n\n"
         #need to create conditional method. if can't find number in data base, then create a new num instance FIX THIS
-        find_or_create_number_instance
+        $num_instance = find_or_create_number_instance
         $fact_instance = find_or_create_fact_instance
     end
 
@@ -30,7 +30,7 @@ class NumbersTrivia
         puts "************************\n\n"
         puts "What number would you like to learn about? Enter an integer.\n\n"
         input = gets.chomp
-        if input.is_a? Integer
+        if input === input.to_i ? "It's an integer" : "It's a string"
             input
         elsif input.downcase == "exit" || input.downcase == "exit!"
             system('clear')
@@ -38,7 +38,7 @@ class NumbersTrivia
             puts "BYE, FELICIA!"
             puts "\n************************\n"
             exit 
-        else
+        else input
             puts "'#{input}' is not a number!\n\n"
             get_number_from_user
         end
